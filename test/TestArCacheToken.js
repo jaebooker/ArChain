@@ -8,6 +8,24 @@ contract('ArCacheToken', function(accounts){
         assert.equal(owner, accounts[0]);
         });
     });
+    it("should return 0 tokens to owners account", async () => {
+        let instance = await ArCacheToken.deployed();
+        let owner = await instance.owner();
+        let mint = await instance.mint();
+        let balance = instance.balance();
+        assert.equal(balance, 0);
+        });
+    });
+    it("should return texture and shape representation in uints", async () => {
+        let instance = await ArCacheToken.deployed();
+        let owner = await instance.owner();
+        let mint = await instance.mint();
+        let mint = await instance.mint();
+        let mint = await instance.mint();
+        let objects = instance.getAllObjectsById();
+        assert.equal(len(objects), 3);
+        });
+    });
 
   it("should put 0 tokens in the owners account", function(){
     return ArCacheToken.deployed().then(function(instance){

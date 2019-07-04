@@ -24,7 +24,7 @@ contract ArCacheToken is ERC721Token, Ownable {
   mapping (uint256 => address) private _tokenOwner;
   constructor() ERC721("ArCache Token", "ARCT") public {}
 
-  owner = msg.sender
+  uint owner = msg.sender;
 
   //object struct, containing texture and type (sword, coin, etc.)
   struct Object {
@@ -51,5 +51,9 @@ contract ArCacheToken is ERC721Token, Ownable {
   //will get the visual for the object that will be used for the mobile application
   function getObjectVisualFromId(uint id) public view returns(uint8, uint8) {
     return (objects[id].texture, objects[id].type);
+  }
+  //return list of objects
+  function getAllObjectsById() public view returns(Object[]) {
+      return objects;
   }
 }
