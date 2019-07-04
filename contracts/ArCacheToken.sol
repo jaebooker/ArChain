@@ -1,15 +1,20 @@
 pragma solidity >=0.4.21 <0.6.0;
 
-import './node_modules/openzeppelin-solidity/contracts/token/ERC721/ERC721Token.sol';
-import "../../math/SafeMath.sol";
-
-/// @title ArCacheToken
+/// @title ArCache
 /// @author Jaeson Booker
 /// @notice You can use this contract for generating ERC721 tokens to represent object
 /// in augmented reality
 /// @dev All function calls are currently implemented without known side effects
 
+import './node_modules/openzeppelin-solidity/contracts/token/ERC721/ERC721Token.sol';
+import "../../math/SafeMath.sol";
+
 contract ArCacheToken is ERC721Token {
+  /// @author Jaeson Booker
+  /// @notice Inherists from Openzeppelin's ERC721 Token
+  /// @dev could find better, more decentralized way of handling token minting
+  /// @param uses SafeMath and Openzeppelin
+  /// @return mints tokens that describe texture and type for mobile UI yet to be fully implemented
   using SafeMath for uint256;
   bytes4 private constant _ERC721_RECEIVED = 0x150b7a02;
 
