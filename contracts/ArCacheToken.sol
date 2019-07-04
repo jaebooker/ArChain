@@ -7,7 +7,8 @@ pragma solidity >=0.5.0 <0.6.0;
 /// @dev All function calls are currently implemented without known side effects
 
 import './node_modules/openzeppelin-solidity/contracts/token/ERC721/ERC721Token.sol';
-import "../../math/SafeMath.sol";
+import './node_modules/openzeppelin-solidity/contracts/token/ERC721/Ownable.sol';
+import "./node_modules/openzeppelin-solidity/math/SafeMath.sol";
 
 contract ArCacheToken is ERC721Token, Ownable {
   /// @author Jaeson Booker
