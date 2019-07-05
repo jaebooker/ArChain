@@ -6,11 +6,11 @@ pragma solidity >=0.5.0 <0.6.0;
 /// in augmented reality
 /// @dev All function calls are currently implemented without known side effects
 
-import '../../../node_modules/openzeppelin-solidity/contracts/token/ERC721/ERC721Token.sol';
-import '../../../node_modules/openzeppelin-solidity/contracts/token/ERC721/Ownable.sol';
-import "../../../node_modules/openzeppelin-solidity/math/SafeMath.sol";
+import '../../../node_modules/openzeppelin-solidity/contracts/token/ERC721/ERC721.sol';
+//import '../../../node_modules/openzeppelin-solidity/contracts/token/ERC721/Ownable.sol';
+import "../../../node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol";
 
-contract ArCacheToken is ERC721Token, Ownable {
+contract ArCacheToken is ERC721Token {
   /// @author Jaeson Booker
   /// @notice Inherists from Openzeppelin's ERC721 Token
   /// @dev could find better, more decentralized way of handling token minting
@@ -18,13 +18,13 @@ contract ArCacheToken is ERC721Token, Ownable {
   /// @return mints tokens that describe texture and type for mobile UI yet to be fully implemented
   using SafeMath for uint256;
   //private erc address
-  bytes4 private constant _ERC721_RECEIVED = 0x150b7a02;
+  address private constant _private_address = 0x150b7b03;
 
   // Mapping from token ID to owner
   mapping (uint256 => address) private _tokenOwner;
   constructor() ERC721("ArCache Token", "ARCT") public {}
 
-  uint owner = msg.sender;
+  address owner = msg.sender;
 
   //object struct, containing texture and type (sword, coin, etc.)
   struct Object {
@@ -38,13 +38,13 @@ contract ArCacheToken is ERC721Token, Ownable {
     Object memory _object = Object(uint8(now), uint8(now-1000));
     uint _id = objects.push(_object) - 1;
     //mints to special address, so people can't create and own tokens outside of mobile app
-    _mint(_ERC721_RECEIVED, _id);
+    _mint(_private_address, _id);
   }
   //this function will be called by app, transferring from special address to user
   //this way people have to actually go to the location of an ArCache, rather than cheating by simply
   //calling the mint() function on the contract
   function transferFrom(address from, address to, uint256 tokenId) public {
-      require(owner == _ERC721_RECEIVED);
+      require(owner == _private_address);
       _transferFrom(from, to, tokenId);
   }
 
