@@ -6,9 +6,9 @@ pragma solidity >=0.5.0 <0.6.0;
 /// in augmented reality
 /// @dev All function calls are currently implemented without known side effects
 
-import './node_modules/openzeppelin-solidity/contracts/token/ERC721/ERC721Token.sol';
-import './node_modules/openzeppelin-solidity/contracts/token/ERC721/Ownable.sol';
-import "./node_modules/openzeppelin-solidity/math/SafeMath.sol";
+import '../../../node_modules/openzeppelin-solidity/contracts/token/ERC721/ERC721Token.sol';
+import '../../../node_modules/openzeppelin-solidity/contracts/token/ERC721/Ownable.sol';
+import "../../../node_modules/openzeppelin-solidity/math/SafeMath.sol";
 
 contract ArCacheToken is ERC721Token, Ownable {
   /// @author Jaeson Booker
@@ -29,7 +29,7 @@ contract ArCacheToken is ERC721Token, Ownable {
   //object struct, containing texture and type (sword, coin, etc.)
   struct Object {
     uint8 texture;
-    uint8 type;
+    uint8 objectType;
   }
   //storing all objects in an array
   Object[] objects;
@@ -44,13 +44,13 @@ contract ArCacheToken is ERC721Token, Ownable {
   //this way people have to actually go to the location of an ArCache, rather than cheating by simply
   //calling the mint() function on the contract
   function transferFrom(address from, address to, uint256 tokenId) public {
-      require(owner == _ERC721_RECEIVED)
-      _transferFrom(address from, address to, uint256 tokenId)
+      require(owner == _ERC721_RECEIVED);
+      _transferFrom(from, to, tokenId);
   }
 
   //will get the visual for the object that will be used for the mobile application
   function getObjectVisualFromId(uint id) public view returns(uint8, uint8) {
-    return (objects[id].texture, objects[id].type);
+    return (objects[id].texture, objects[id].objectType);
   }
   //return list of objects
   function getAllObjectsById() public view returns(Object[]) {
