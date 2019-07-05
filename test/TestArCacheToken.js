@@ -22,8 +22,8 @@ contract('ArCacheToken', function(accounts){
         let mint = await instance.mint();
         let mint = await instance.mint();
         let mint = await instance.mint();
-        let objects = instance.getAllObjectsById();
-        assert.equal(len(objects), 3);
+        let ar_objects = instance.objects;
+        assert.equal(len(ar_objects), 3);
         });
     });
 

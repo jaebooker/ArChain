@@ -52,8 +52,8 @@ contract ArCacheToken is ERC721Token {
   function getObjectVisualFromId(uint id) public view returns(uint8, uint8) {
     return (objects[id].texture, objects[id].objectType);
   }
-  //return list of objects
-  function getAllObjectsById() public view returns(Object[]) {
-      return objects;
-  }
+  // //return list of objects
+  // function getAllObjectsById() public view returns(Object[]) {
+  //     return objects;
+  // }
 }
