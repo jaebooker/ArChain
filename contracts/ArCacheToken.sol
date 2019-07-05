@@ -18,7 +18,7 @@ contract ArCacheToken is ERC721 {
   /// @return mints tokens that describe texture and type for mobile UI yet to be fully implemented
   using SafeMath for uint256;
   //private erc address
-  address private constant _private_address = 0x150b7b03;
+  address private _private_address;
 
   // Mapping from token ID to owner
   mapping (uint256 => address) private _tokenOwner;
