@@ -10,7 +10,7 @@ import '../../../node_modules/openzeppelin-solidity/contracts/token/ERC721/ERC72
 //import '../../../node_modules/openzeppelin-solidity/contracts/token/ERC721/Ownable.sol';
 import "../../../node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol";
 
-contract ArCacheToken is ERC721Token {
+contract ArCacheToken is ERC721 {
   /// @author Jaeson Booker
   /// @notice Inherists from Openzeppelin's ERC721 Token
   /// @dev could find better, more decentralized way of handling token minting
