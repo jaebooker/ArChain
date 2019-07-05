@@ -22,25 +22,37 @@ contract('ArCacheToken', function(accounts){
         let mint = await instance.mint();
         let mint = await instance.mint();
         let mint = await instance.mint();
-        let ar_objects = instance.objects;
+        let ar_objects = await instance.objects;
         assert.equal(len(ar_objects), 3);
         });
     });
-
-  it("should put 0 tokens in the owners account", function(){
-    return ArCacheToken.deployed().then(function(instance){
-      instance.mint()
-      return instance.balance.call(accounts[0]);
-    }).then(function(balance){
-      assert.equal(balance.valueOf(), 0, "Something went wrong");
+    it("should be unable to put tokens in account, without _private_address", async () => {
+        let instance = await ArCacheToken.deployed();
+        let owner = await instance.owner();
+        let mint = await instance.mint();
+        let ar_objects = await instance.objects;
+        await instance.transferFrom(accounts[0],accounts[0],ar_objects[0]);
+        let balance = instance.balance();
+        assert.equal(balance, 0);
+        });
     });
-  });
 
-  it("should return the caches texture and shape", function(){
-    return ArCacheToken.deployed().then(function(instance){
-      return instance.getObjectVisualFromId(uint id).call();
-  }).then(function(instance){
-      assert.equal(instance, "gold, sword", "shape and texture was not defined");
-    });
-  });
+
+
+  // it("should put 0 tokens in the owners account", function(){
+  //   return ArCacheToken.deployed().then(function(instance){
+  //     instance.mint()
+  //     return instance.balance.call(accounts[0]);
+  //   }).then(function(balance){
+  //     assert.equal(balance.valueOf(), 0, "Something went wrong");
+  //   });
+  // });
+  //
+  // it("should return the caches texture and shape", function(){
+  //   return ArCacheToken.deployed().then(function(instance){
+  //     return instance.getObjectVisualFromId(uint id).call();
+  // }).then(function(instance){
+  //     assert.equal(instance, "gold, sword", "shape and texture was not defined");
+  //   });
+  // });
 });

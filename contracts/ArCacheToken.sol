@@ -45,6 +45,7 @@ contract ArCacheToken is ERC721 {
   //this function will be called by app, transferring from special address to user
   //this way people have to actually go to the location of an ArCache, rather than cheating by simply
   //calling the mint() function on the contract
+  //In the future, will probably use the Approve() implementation
   function transferFrom(address from, address to, uint256 tokenId) public {
       require(owner == _private_address);
       _transferFrom(from, to, tokenId);
