@@ -9,5 +9,8 @@
 #npm install -g truffle
 #npm install -g ganache-cli
 #Start ganache-cli: ganache-cli -b 3
-#Compile and migrate contracts: truffle compile && truffle migrate
+#Truffle Develop
+#truffle compile
+#truffle migrate
+#to test, use truffle test within Develop
 #Install app: react-native run-ios (you can also do this through Xcode)
