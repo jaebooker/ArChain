@@ -7,24 +7,21 @@ contract('ArCacheToken', function(accounts){
         let owner = await instance.owner();
         assert.equal(owner, accounts[0]);
         });
-    });
     it("Should return 0 tokens to owners account", async () => {
         let instance = await ArCacheToken.deployed();
         let owner = await instance.owner();
         let mint = await instance.mint();
         let balance = instance.balanceOf(accounts[0]);
         assert.equal(balance, 0);
-        });
     });
     it("Should return objects after being minted", async () => {
         let instance = await ArCacheToken.deployed();
         let owner = await instance.owner();
         let mint = await instance.mint();
-        let mint = await instance.mint();
-        let mint = await instance.mint();
+        let mint2 = await instance.mint();
+        let mint3 = await instance.mint();
         let ar_objects = await instance.objects;
         assert.equal(len(ar_objects), 3);
-        });
     });
     it("Should be unable to put tokens in account, without _private_address", async () => {
         let instance = await ArCacheToken.deployed();
@@ -34,7 +31,6 @@ contract('ArCacheToken', function(accounts){
         await instance.transferFrom(accounts[0],accounts[0],ar_objects[0]);
         let balance = instance.balanceOf(accounts[0]);
         assert.equal(balance, 0);
-        });
     });
 
 
