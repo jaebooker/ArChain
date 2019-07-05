@@ -22,7 +22,9 @@ contract ArCacheToken is ERC721 {
 
   // Mapping from token ID to owner
   mapping (uint256 => address) private _tokenOwner;
-  constructor() ERC721("ArCache Token", "ARCT") public {}
+  // constructor() ERC721("ArCache Token", "ARCT") public {}
+  string public constant name = "ArCacheToken";
+  string public constant symbol = "ARCT";
 
   address owner = msg.sender;
 
